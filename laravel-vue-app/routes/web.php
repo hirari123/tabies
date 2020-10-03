@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello', 'HelloController@index');
+Route::get('human', 'HumanController@human');
+
+// POSTルートの設定
+Route::post('human', 'HumanController@post');
