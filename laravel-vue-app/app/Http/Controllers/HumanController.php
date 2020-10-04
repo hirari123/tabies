@@ -7,10 +7,9 @@ use Illuminate\Http\Response;
 
 class HumanController extends Controller
 {
-    public function human()
+    public function human(Request $request)
     {
-        $data = ['リクーム', 'バータ', 'ジース', 'グルド', 'ギニュー', ];
-        return view('human.human', ['data'=>$data]);
+        return view('human.human');
     }
 
     public function post(Request $request)
