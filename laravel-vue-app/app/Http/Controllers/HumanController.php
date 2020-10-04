@@ -9,11 +9,17 @@ class HumanController extends Controller
 {
     public function human(Request $request)
     {
-        return view('human.human');
+        return view('human.human', ['msg'=>'フォームを入力：']);
     }
 
     public function post(Request $request)
     {
-        return view('human.human', ['fst'=>$request->fst]);
+        $validate_rule = [
+            'name' => 'required',
+            'mail' => 'email',
+            'age' => 'numeric|between:0,150',
+        ];
+        $this->validate($request, $validate_rule);
+        return view('human.human', ['msg'=>'正しく入力されました!!']);
     }
 }
