@@ -15,7 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('human', 'HumanController@human');
+use App\Http\Middleware\HumanMiddleware;
+Route::get('human', 'HumanController@human')->middleware(HumanMiddleware::class);
 
 // POSTルートの設定
 Route::post('human', 'HumanController@post');
