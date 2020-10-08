@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\Myrule;
 
 class HumanRequest extends FormRequest
 {
@@ -31,7 +32,7 @@ class HumanRequest extends FormRequest
         return [
             'name' => 'required',
             'mail' => 'email',
-            'age' => 'numeric|human',
+            'age' => ['numeric', new Myrule(5)],
         ];
     }
 
