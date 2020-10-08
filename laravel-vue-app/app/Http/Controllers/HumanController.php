@@ -13,11 +13,25 @@ class HumanController extends Controller
 {
     public function human(Request $request)
     {
-        return view('human.human', ['msg'=>'フォームを入力してください。']);
+        if ($request->hasCookie('msg'))
+        {
+            $msg = 'Cookie: ' . $request->cookie('msg');
+        } else {
+            $msg = '※Cookieはございません。';
+        }
+        return view('human.human', ['msg'=>$msg]);
     }
 
-    public function post(HumanRequest $request)
+    public function post(Request $request)
     {
-        return view('human.human', ['msg'=>'正しく入力されました!!']);
+        $validate_rule = [
+            'msg' =>'required',
+        ];
+
+        $this->validate($request, $validate_rule);
+        $msg = $request->msg;
+        $response = response()->view('human.human', ['msg'=>'「' . $msg . '」をクッキーに保存しました。']);
+        $response->cookie('msg', $msg, 100);
+        return $response;
     }
 }
