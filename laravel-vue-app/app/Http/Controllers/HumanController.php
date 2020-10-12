@@ -7,19 +7,15 @@ use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HumanRequest;
 
 class HumanController extends Controller
 {
     public function human(Request $request)
     {
-        if ($request->hasCookie('msg'))
-        {
-            $msg = 'Cookie: ' . $request->cookie('msg');
-        } else {
-            $msg = '※Cookieはございません。';
-        }
-        return view('human.human', ['msg'=>$msg]);
+        $item = DB::select('select * from p');
+        return view('human.human', ['item'=>$item]);
     }
 
     public function post(Request $request)
