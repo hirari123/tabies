@@ -28,9 +28,13 @@ class HumanServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $validator = $this->app['validator'];
-        $validator->resolver(function($translator, $data, $rules, $messages) {
-            return new HumanValidator($translator, $data, $rules, $messages);
+        // $validator = $this->app['validator'];
+        // $validator->resolver(function($translator, $data, $rules, $messages) {
+        //     return new HumanValidator($translator, $data, $rules, $messages);
+        // });
+
+        Validator::extend('human', function($attribute, $value, $parameters, $validator) {
+            return $value % 2 == 0;
         });
     }
 }
