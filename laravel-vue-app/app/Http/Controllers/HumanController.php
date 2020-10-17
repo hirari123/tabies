@@ -14,8 +14,8 @@ class HumanController extends Controller
 {
     public function human(Request $request)
     {
-        $item = DB::select('select * from p');
-        return view('human.human', ['item'=>$item]);
+        $items = DB::select('select * from articles');
+        return view('human.human', ['items'=>$items]);
     }
 
     public function post(Request $request)
