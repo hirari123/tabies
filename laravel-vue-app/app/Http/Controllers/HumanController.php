@@ -20,14 +20,25 @@ class HumanController extends Controller
 
     public function post(Request $request)
     {
-        $validate_rule = [
-            'msg' =>'required',
+        $items = DB::select('select * from articles');
+        return view('human.human', ['items'=>$items]);
+    }
+
+    public function add(Request $request)
+    {
+        return view('human.add');
+    }
+
+    public function create(Request $request)
+    {
+        $param = [
+            'name' => $request->name,
+            'mail' => $request->mail,
+            'age' => $request->age,
         ];
 
-        $this->validate($request, $validate_rule);
-        $msg = $request->msg;
-        $response = response()->view('human.human', ['msg'=>'「' . $msg . '」をクッキーに保存しました。']);
-        $response->cookie('msg', $msg, 100);
-        return $response;
+        DB::insert('insert into articles(name, mail, age) values(:name, :mail, :age)', $param);
+
+        return redirect('/human');
     }
 }
