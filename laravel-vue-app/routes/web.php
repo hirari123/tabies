@@ -19,3 +19,6 @@ Route::get('human', 'HumanController@human');
 
 // POSTルートの設定
 Route::post('human', 'HumanController@post');
+
+Route::get('human/add', 'HumanController@add');
+Route::post('human/create', 'HumanController@create');
