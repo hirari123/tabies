@@ -41,4 +41,24 @@ class HumanController extends Controller
 
         return redirect('/human');
     }
+
+    public function edit(Request $request)
+    {
+        $param = ['id' => $request->id];
+        $item = DB::select('select * from articles where id = :id', $param);
+        return view('human.edit', ['form' => $item[0]]);
+    }
+
+    public function update(Request $request)
+    {
+        $param = [
+            'id' => $request->id,
+            'name' => $request->name,
+            'mail' => $request->mail,
+            'age' => $request->age
+        ];
+
+        DB::update('update articles set name =:name, mail = :mail, age = :age where id = :id', $param);
+        return redirect('/human');
+    }
 }
