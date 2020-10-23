@@ -21,4 +21,10 @@ Route::get('human', 'HumanController@human');
 Route::post('human', 'HumanController@post');
 
 Route::get('human/add', 'HumanController@add');
-Route::post('human/create', 'HumanController@create');
+Route::post('human/add', 'HumanController@create');
+
+Route::get('human/edit', 'HumanController@edit');
+Route::post('human/edit', 'HumanController@update');
+
+Route::get('human/del', 'HumanController@del');
+Route::post('human/del', 'HumanController@remove');
