@@ -15,13 +15,13 @@ class HumanController extends Controller
     public function human(Request $request)
     {
         $items = DB::select('select * from articles');
-        return view('human.human', ['items'=>$items]);
+        return view('human.human', ['items' => $items]);
     }
 
     public function post(Request $request)
     {
         $items = DB::select('select * from articles');
-        return view('human.human', ['items'=>$items]);
+        return view('human.human', ['items' => $items]);
     }
 
     public function add(Request $request)
@@ -59,6 +59,20 @@ class HumanController extends Controller
         ];
 
         DB::update('update articles set name =:name, mail = :mail, age = :age where id = :id', $param);
+        return redirect('/human');
+    }
+
+    public function del(Request $request)
+    {
+        $param = ['id' => $request->id];
+        $item = DB::select('select * from articles where id = :id', $param);
+        return view('human.del', ['form' => $item[0]]);
+    }
+
+    public function remove(Request $request)
+    {
+        $param = ['id' => $request->id];
+        DB::delete('delete from articles where id = :id', $param);
         return redirect('/human');
     }
 }
