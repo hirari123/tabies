@@ -28,3 +28,5 @@ Route::post('human/edit', 'HumanController@update');
 
 Route::get('human/del', 'HumanController@del');
 Route::post('human/del', 'HumanController@remove');
+
+Route::get('human/show', 'HumanController@show');
