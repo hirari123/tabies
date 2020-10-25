@@ -14,7 +14,7 @@ class HumanController extends Controller
 {
     public function human(Request $request)
     {
-        $items = DB::select('select * from articles');
+        $items = DB::table('articles')->get();
         return view('human.human', ['items' => $items]);
     }
 
@@ -74,5 +74,12 @@ class HumanController extends Controller
         $param = ['id' => $request->id];
         DB::delete('delete from articles where id = :id', $param);
         return redirect('/human');
+    }
+
+    public function show(Request $request)
+    {
+        $id = $request->id;
+        $item = DB::table('articles')->where('id', '<=', $id)->get();
+        return view('human.show', ['item' => $item]);
     }
 }
