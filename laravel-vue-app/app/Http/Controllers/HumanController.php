@@ -78,8 +78,11 @@ class HumanController extends Controller
 
     public function show(Request $request)
     {
-        $id = $request->id;
-        $item = DB::table('articles')->where('id', '<=', $id)->get();
-        return view('human.show', ['item' => $item]);
+        $name = $request->name;
+        $items = DB::table('articles')
+            ->where('name', 'like', '%' . $name . '%')
+            ->orWhere('mail', 'like', '%' .$name . '%')
+            ->get();
+        return view('human.show', ['item' => $items]);
     }
 }
