@@ -30,3 +30,7 @@ Route::get('human/del', 'HumanController@del');
 Route::post('human/del', 'HumanController@remove');
 
 Route::get('human/show', 'HumanController@show');
+
+
+// ORM
+Route::get('person', 'PersonController@human');
