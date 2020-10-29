@@ -34,3 +34,6 @@ Route::get('human/show', 'HumanController@show');
 
 // ORM
 Route::get('person', 'PersonController@human');
+
+Route::get('person/find', 'PersonController@find');
+Route::post('person/find', 'PersonController@search');
