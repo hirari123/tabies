@@ -1,4 +1,4 @@
-@extends('layouts', 'humanapp')
+@extends('layouts.humanapp')
 
 @section('title', 'Person.human')
 
