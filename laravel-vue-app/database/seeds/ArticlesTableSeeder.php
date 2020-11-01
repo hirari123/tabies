@@ -14,7 +14,7 @@ class ArticlesTableSeeder extends Seeder
         $param = [
             'name' => 'shota',
             'mail' => 'hirakawa@hirakawa.jp',
-            'age' => 34,
+            'age' => 35,
         ];
         DB::table('articles')->insert($param);
 

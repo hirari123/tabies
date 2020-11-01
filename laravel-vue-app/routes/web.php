@@ -11,6 +11,9 @@
 |
 */
 
+// use Illuminate\Routing\Route;
+use vendor\laravel\framework\src\Illuminate\Routing;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,8 +35,23 @@ Route::post('human/del', 'HumanController@remove');
 Route::get('human/show', 'HumanController@show');
 
 
-// ORM
+// ORM person
 Route::get('person', 'PersonController@human');
 
 Route::get('person/find', 'PersonController@find');
 Route::post('person/find', 'PersonController@search');
+// 新規作成ルーティング
+Route::get('person/add', 'PersonController@add');
+Route::post('person/add', 'PersonController@create');
+
+Route::get('person/edit', 'PersonController@edit');
+Route::post('person/edit', 'PersonController@update');
+
+Route::get('person/del', 'PersonController@delete');
+Route::post('person/del', 'PersonController@remove');
+
+// ORM board
+Route::get('board', 'BoardController@human');
+// 新規作成ルーティング
+Route::get('board/add', 'BoardController@add');
+Route::post('board/add', 'BoardController@create');
