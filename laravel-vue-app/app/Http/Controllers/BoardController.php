@@ -10,7 +10,7 @@ class BoardController extends Controller
     //レコードの一覧表示
     public function human(Request $request)
     {
-        $items = Board::all();
+        $items = Board::with('person')->get();
         return view('board.human', ['items' => $items]);
     }
 
