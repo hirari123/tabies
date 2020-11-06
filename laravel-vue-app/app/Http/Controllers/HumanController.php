@@ -85,4 +85,9 @@ class HumanController extends Controller
             ->get();
         return view('human.show', ['item' => $items]);
     }
+
+    public function rest(Request $request)
+    {
+        return view('human.rest');
+    }
 }
