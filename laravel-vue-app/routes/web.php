@@ -55,3 +55,8 @@ Route::get('board', 'BoardController@human');
 // 新規作成ルーティング
 Route::get('board/add', 'BoardController@add');
 Route::post('board/add', 'BoardController@create');
+
+// CRUD関係のアクセスをまとめて登録
+Route::resource('rest', 'RestappController');
+
+Route::get('human/rest', 'HumanController@rest');
